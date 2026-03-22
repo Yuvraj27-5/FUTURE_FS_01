@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FolioHub — Creative Portfolio Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+<div id="toastContainer"></div>
+
+<!-- ═══════════ LANDING PAGE (FIX #2: removed nav links, browse work btn; display-only explore/trending) ═══════════ -->
+<div id="page-landing" class="page active">
+  <nav class="land-nav" style="justify-content:space-between">
+    <div class="logo"><div class="logo-dot"></div>FolioHub</div>
+    <div class="land-nav-right">
+      <button class="btn-ghost" onclick="showPage('login')">Sign In</button>
+      <button class="btn-accent" onclick="showPage('signup')">Start Free — It's Free</button>
+    </div>
+  </nav>
+
+  <div class="land-hero">
+    <div class="hero-bg">
+      <div class="hero-grid"></div>
+      <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge"><div class="logo-dot" style="width:6px;height:6px"></div>THE CREATIVE PLATFORM FOR DEVELOPERS &amp; DESIGNERS</div>
+      <h1 class="hero-h1">Showcase Your <em>Best Work</em><br/>to the World</h1>
+      <p class="hero-sub">Join 500K+ developers, designers &amp; creatives who use FolioHub to share projects, get discovered by top companies, and land dream roles.</p>
+      <div class="hero-actions">
+        <button class="btn-accent btn-lg" onclick="showPage('signup')">Create Your Portfolio →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="marquee-item">Web Development</span><span class="marquee-item">UI/UX Design</span><span class="marquee-item">Branding</span><span class="marquee-item">Mobile Apps</span><span class="marquee-item">Machine Learning</span><span class="marquee-item">Open Source</span><span class="marquee-item">Illustration</span><span class="marquee-item">Photography</span><span class="marquee-item">Motion Design</span><span class="marquee-item">Data Science</span>
+      <span class="marquee-item">Web Development</span><span class="marquee-item">UI/UX Design</span><span class="marquee-item">Branding</span><span class="marquee-item">Mobile Apps</span><span class="marquee-item">Machine Learning</span><span class="marquee-item">Open Source</span><span class="marquee-item">Illustration</span><span class="marquee-item">Photography</span><span class="marquee-item">Motion Design</span><span class="marquee-item">Data Science</span>
+    </div>
+  </div>
+
+  <!-- Display-only explore section (FIX #2: not clickable) -->
+  <div class="land-section">
+    <div class="section-eyebrow">Explore</div>
+    <h2 class="section-h2">Browse by Category</h2>
+    <p class="section-sub">Discover world-class work across every discipline.</p>
+    <div class="cat-grid">
+      <div class="cat-card" style="cursor:default;overflow:hidden;position:relative">
+        <img src="/images/webdev.jpg" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" onerror="this.style.display='none'"/>
+        <div class="cat-card-overlay"></div><div class="cat-card-label">⚛️ Web Development</div>
+      </div>
+      <div class="cat-card" style="cursor:default;overflow:hidden;position:relative;background:linear-gradient(135deg,#1f0d1a,#160d1f)">
+        <img src="/images/uiux.jpg" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" onerror="this.style.display='none'"/>
+        <div class="cat-card-overlay"></div><div class="cat-card-label">🎨 UI/UX Design</div>
+      </div>
+      <div class="cat-card" style="cursor:default;overflow:hidden;position:relative;background:linear-gradient(135deg,#1f1c0d,#1a100d)">
+        <img src="/images/mobile.jpg" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" onerror="this.style.display='none'"/>
+        <div class="cat-card-overlay"></div><div class="cat-card-label">📱 Mobile Apps</div>
+      </div>
+      <div class="cat-card" style="cursor:default;overflow:hidden;position:relative;background:linear-gradient(135deg,#0d101f,#101d1f)">
+        <img src="/images/aiml.jpg" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" onerror="this.style.display='none'"/>
+        <div class="cat-card-overlay"></div><div class="cat-card-label">🤖 AI / ML</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Display-only trending section (FIX #2: not clickable, just for show) -->
+  <div class="land-section land-section-dark">
+    <div class="feat-hdr">
+      <div>
+        <div class="section-eyebrow">Trending</div>
+        <h2 class="section-h2">Trending This Week</h2>
+      </div>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card" style="cursor:default"><div class="feat-vis fv1">🌐</div><div class="feat-body"><div class="feat-title">DARKNODE — Award Winning Web Experience</div><div class="feat-meta"><span>By Qream Studio</span><span>❤️ 2.4K &nbsp; 👁 18K</span></div></div></div>
+      <div class="feat-card" style="cursor:default"><div class="feat-vis fv2">🎨</div><div class="feat-body"><div class="feat-title">Abstract Brand Identity System</div><div class="feat-meta"><span>By Maria S.</span><span>❤️ 891</span></div></div></div>
+    </div>
+    <div class="feat-grid-bot">
+      <div class="feat-card" style="cursor:default"><div class="feat-vis fv3">📱</div><div class="feat-body"><div class="feat-title">iOS Fintech App Redesign</div><div class="feat-meta"><span>Alex K.</span><span>❤️ 543</span></div></div></div>
+      <div class="feat-card" style="cursor:default"><div class="feat-vis fv4">🤖</div><div class="feat-body"><div class="feat-title">AI Dashboard System</div><div class="feat-meta"><span>Nina R.</span><span>❤️ 892</span></div></div></div>
+      <div class="feat-card" style="cursor:default"><div class="feat-vis fv5">🛒</div><div class="feat-body"><div class="feat-title">E-Commerce Platform</div><div class="feat-meta"><span>James L.</span><span>❤️ 309</span></div></div></div>
+    </div>
+  </div>
+
+  <div class="stats-section">
+    <div class="stat-blk"><div class="stat-blk-n">500K+</div><div class="stat-blk-l">CREATIVE PROFESSIONALS</div></div>
+    <div class="stat-blk"><div class="stat-blk-n">2.4M+</div><div class="stat-blk-l">PROJECTS SHOWCASED</div></div>
+    <div class="stat-blk"><div class="stat-blk-n">85K+</div><div class="stat-blk-l">COMPANIES HIRING</div></div>
+    <div class="stat-blk"><div class="stat-blk-n">99%</div><div class="stat-blk-l">SATISFACTION RATE</div></div>
+  </div>
+
+  <footer class="land-footer">
+    <div class="logo"><div class="logo-dot"></div>FolioHub</div>
+    <p>© 2026 FolioHub. Built for creators worldwide.</p>
+    <div style="display:flex;gap:16px">
+      <a href="#" style="font-size:.73rem;color:var(--text3)">Privacy</a>
+      <a href="#" style="font-size:.73rem;color:var(--text3)">Terms</a>
+      <a href="#" style="font-size:.73rem;color:var(--text3)">Help</a>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════ LOGIN ═══════════ -->
+<div id="page-login" class="page">
+  <div class="auth-split">
+    <div class="auth-left">
+      <div class="auth-left-glow"></div>
+      <div class="auth-preview">
+        <div class="auth-preview-title"><div class="logo-dot"></div>FolioHub</div>
+        <p class="auth-preview-sub">Your creative portfolio, discovered by the world's best companies.</p>
+        <div class="auth-mockup">
+          <div class="auth-mockup-bar">
+            <div class="auth-dots"><div class="auth-dot amd1"></div><div class="auth-dot amd2"></div><div class="auth-dot amd3"></div></div>
+            <div class="auth-url">foliohub.io/dashboard</div>
+          </div>
+          <div class="auth-mock-grid">
+            <div class="auth-mock-card amc1">🌐</div><div class="auth-mock-card amc2">🎨</div>
+            <div class="auth-mock-card amc3">📱</div><div class="auth-mock-card amc4">🤖</div>
+          </div>
+          <div class="auth-mock-stats">
+            <div class="auth-mock-stat"><div class="auth-stat-n">12K</div><div class="auth-stat-l">Views</div></div>
+            <div class="auth-mock-stat"><div class="auth-stat-n">847</div><div class="auth-stat-l">Likes</div></div>
+            <div class="auth-mock-stat"><div class="auth-stat-n">23</div><div class="auth-stat-l">Projects</div></div>
+          </div>
+        </div>
+        <div class="auth-features">
+          <div class="auth-feat"><div class="auth-feat-icon">🚀</div><div><div class="auth-feat-text">Launch your portfolio instantly</div><div class="auth-feat-sub">Go live in minutes</div></div></div>
+          <div class="auth-feat"><div class="auth-feat-icon">💼</div><div><div class="auth-feat-text">85K+ companies actively hiring</div><div class="auth-feat-sub">Get discovered by top recruiters</div></div></div>
+          <div class="auth-feat"><div class="auth-feat-icon">⭐</div><div><div class="auth-feat-text">Free forever plan available</div><div class="auth-feat-sub">No credit card required</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="auth-right">
+      <div class="auth-form">
+        <div class="auth-logo"><div class="logo-dot"></div>FolioHub</div>
+        <h2 class="auth-h2">Welcome back 👋</h2>
+        <p class="auth-sub">Sign in to continue to your portfolio</p>
+        <form onsubmit="handleLogin(event)">
+          <div class="field"><label>EMAIL ADDRESS</label><input type="email" id="loginEmail" placeholder="yuvrajranarmg1234@gmail.com" required/></div>
+          <div class="field"><label>PASSWORD</label><input type="password" id="loginPassword" placeholder="••••••••" required/></div>
+          <div style="text-align:right;margin:-4px 0 12px"><a href="#" style="font-size:.75rem;color:var(--text2)">Forgot password?</a></div>
+          <button type="submit" class="auth-btn" id="loginBtn">Sign In →</button>
+        </form>
+        <p class="auth-switch">Don't have an account? <a href="#" onclick="showPage('signup')">Sign up free</a></p>
+        <p class="auth-back"><a href="#" onclick="showPage('landing')">← Back to home</a></p>
+        <p style="text-align:center;margin-top:14px;font-size:.72rem;color:var(--text3)">Demo: demo@foliohub.io / password123</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ SIGNUP ═══════════ -->
+<div id="page-signup" class="page">
+  <div class="auth-split">
+    <div class="auth-left">
+      <div class="auth-left-glow"></div>
+      <div class="auth-preview">
+        <div class="auth-preview-title"><div class="logo-dot"></div>FolioHub</div>
+        <p class="auth-preview-sub">Join 500K+ creative professionals already on FolioHub.</p>
+        <div class="auth-features">
+          <div class="auth-feat"><div class="auth-feat-icon">🚀</div><div><div class="auth-feat-text">Instant portfolio website</div><div class="auth-feat-sub">foliohub.io/yourname</div></div></div>
+          <div class="auth-feat"><div class="auth-feat-icon">💼</div><div><div class="auth-feat-text">85K+ companies hiring</div><div class="auth-feat-sub">Get discovered by top recruiters</div></div></div>
+          <div class="auth-feat"><div class="auth-feat-icon">📊</div><div><div class="auth-feat-text">Real-time analytics</div><div class="auth-feat-sub">See who views your work</div></div></div>
+          <div class="auth-feat"><div class="auth-feat-icon">💬</div><div><div class="auth-feat-text">Community &amp; messaging</div><div class="auth-feat-sub">Connect with creators worldwide</div></div></div>
+          <div class="auth-feat"><div class="auth-feat-icon">⭐</div><div><div class="auth-feat-text">Free forever — no credit card</div><div class="auth-feat-sub">Upgrade to Pro anytime</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="auth-right">
+      <div class="auth-form">
+        <div class="auth-logo"><div class="logo-dot"></div>FolioHub</div>
+        <h2 class="auth-h2">Create your account</h2>
+        <p class="auth-sub">Free forever · No credit card needed</p>
+        <form onsubmit="handleRegister(event)">
+          <div class="field-row">
+            <div class="field"><label>FULL NAME</label><input type="text" id="regName" placeholder="Yuvraj" required/></div>
+            <div class="field"><label>USERNAME</label><input type="text" id="regUsername" placeholder="yuvraj" required/></div>
+          </div>
+          <div class="field"><label>EMAIL ADDRESS</label><input type="email" id="regEmail" placeholder="yuvrajranarmg1234@gmail.com" required/></div>
+          <div class="field"><label>PASSWORD</label><input type="password" id="regPassword" placeholder="Min 6 characters" required/></div>
+          <button type="submit" class="auth-btn" id="registerBtn">Create Free Account →</button>
+        </form>
+        <p class="auth-terms">By signing up you agree to our <a href="#" style="color:var(--text2)">Terms</a> &amp; <a href="#" style="color:var(--text2)">Privacy Policy</a></p>
+        <p class="auth-switch">Have an account? <a href="#" onclick="showPage('login')">Sign in</a></p>
+        <p class="auth-back"><a href="#" onclick="showPage('landing')">← Back to home</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ APP ═══════════ -->
+<div id="page-app" class="page">
+
+  <!-- APP NAV (FIX #6: removed message icon, only bell notification) -->
+  <nav class="app-nav">
+    <div class="app-logo" onclick="showPage('landing')"><div class="logo-dot"></div>FolioHub</div>
+    <div class="app-nav-tabs">
+      <button class="nav-tab active" data-tab="dashboard" onclick="switchTab('dashboard')">Dashboard</button>
+      <button class="nav-tab" data-tab="explore" onclick="switchTab('explore')">Explore</button>
+      <button class="nav-tab" data-tab="hire" onclick="switchTab('hire')">Hire</button>
+      <button class="nav-tab" data-tab="profile" onclick="switchTab('profile')">Profile</button>
+    </div>
+    <div class="app-search">
+      <span class="app-search-icon">🔍</span>
+      <input type="text" placeholder="Search projects, people, skills..." id="appSearchInput"
+        onkeydown="if(event.key==='Enter'){switchTab('explore');setTimeout(()=>{const i=document.getElementById('exploreSearchInput');if(i){i.value=this.value;setExploreFilter('search',this.value)}},300)}"/>
+    </div>
+    <div class="app-nav-right">
+      <!-- FIX #6: Only bell icon, opens notifications page -->
+      <div style="position:relative">
+        <div class="icon-btn" onclick="switchTab('notifications')" title="Notifications">
+          🔔<div class="notif-dot" id="notifDot" style="display:none"></div>
+        </div>
+      </div>
+      <button class="upload-nav-btn" onclick="openUploadModal()">＋ Upload Work</button>
+      <div style="position:relative">
+        <div class="user-av" id="navUserAv" onclick="toggleUserMenu()">?</div>
+        <div class="dropdown user-dd" id="userDD">
+          <div class="user-dd-hdr">
+            <div class="user-dd-name" id="ddUserName">Yuvraj</div>
+            <div class="user-dd-email" id="ddUserEmail">yuvrajranarmg1234@gmail.com</div>
+          </div>
+          <button class="user-dd-btn" onclick="switchTab('profile');closeDropdowns()">👤 View Profile</button>
+          <button class="user-dd-btn" onclick="switchTab('settings');closeDropdowns()">⚙️ Settings</button>
+          <button class="user-dd-btn" onclick="switchTab('notifications');closeDropdowns()">🔔 Notifications</button>
+          <button class="user-dd-btn" onclick="switchTab('saved');closeDropdowns()">💾 Saved Work</button>
+          <button class="user-dd-btn" onclick="openProModal();closeDropdowns()">⭐ Upgrade to Pro</button>
+          <div class="user-dd-div"></div>
+          <button class="user-dd-btn red" onclick="handleLogout()">🚪 Log Out</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="app-body">
+    <!-- SIDEBAR (FIX #6: removed analytics/alerts, removed message icon) -->
+    <aside class="app-sidebar">
+      <div class="sidebar-user" onclick="switchTab('profile')">
+        <div class="sidebar-user-av" id="sidebarUserAv">?</div>
+        <div>
+          <div class="sidebar-user-name" id="sidebarUserName">Yuvraj</div>
+          <div class="sidebar-user-role" id="sidebarUserRole">Creative Professional</div>
+        </div>
+      </div>
+      <div class="sidebar-label">Main</div>
+      <button class="s-item active" data-tab="dashboard" onclick="switchTab('dashboard')"><span class="s-icon">🏠</span>Dashboard</button>
+      <button class="s-item" data-tab="explore" onclick="switchTab('explore')"><span class="s-icon">🔭</span>Explore<span class="s-badge">Hot</span></button>
+      <button class="s-item" data-tab="hire" onclick="switchTab('hire')"><span class="s-icon">💼</span>Hire / Jobs</button>
+      <button class="s-item" data-tab="profile" onclick="switchTab('profile')"><span class="s-icon">👤</span>My Profile</button>
+      <div class="sidebar-div"></div>
+      <div class="sidebar-label">Work</div>
+      <button class="s-item" onclick="openUploadModal()"><span class="s-icon">➕</span>Upload Project</button>
+      <button class="s-item" data-tab="dashboard" onclick="switchTab('dashboard')"><span class="s-icon">📁</span>My Projects</button>
+      <button class="s-item" data-tab="saved" onclick="switchTab('saved')"><span class="s-icon">💾</span>Saved Work</button>
+      <div class="sidebar-div"></div>
+      <div class="sidebar-label">Account</div>
+      <button class="s-item" data-tab="settings" onclick="switchTab('settings')"><span class="s-icon">⚙️</span>Settings</button>
+      <button class="s-item" onclick="openProModal()"><span class="s-icon">⭐</span>Upgrade to Pro</button>
+    </aside>
+
+    <main class="app-main">
+
+      <!-- ─── DASHBOARD (FIX #3,#7: working tabs, no sparklines, correct stats) ─── -->
+      <div id="sub-dashboard" class="subpage active">
+        <div class="dash-topbar">
+          <div>
+            <div class="dash-greet" id="dashGreet">Good afternoon, there ☀️</div>
+            <div class="dash-date" id="dashDate"></div>
+          </div>
+          <div class="dash-tabs">
+            <button class="d-tab active" onclick="setDTab(this)">Overview</button>
+            <button class="d-tab" onclick="setDTab(this)">Analytics</button>
+            <button class="d-tab" onclick="setDTab(this)">Activity</button>
+          </div>
+        </div>
+        <div class="dash-body">
+
+          <!-- Overview section -->
+          <div id="overviewSection">
+            <!-- FIX #7: Clean stat cards — no sparklines, just big numbers -->
+            <div class="stats-row">
+              <div class="stat-card sc1" style="--glow-color:rgba(232,255,71,.04)">
+                <div class="stat-icon si1">👁</div>
+                <div class="stat-n" id="statViews">—</div>
+                <div class="stat-l">Profile Views</div>
+                <div class="stat-trend" style="margin-top:8px;font-size:.72rem">↑ Live from database</div>
+              </div>
+              <div class="stat-card sc2">
+                <div class="stat-icon si2">❤️</div>
+                <div class="stat-n" id="statLikes">—</div>
+                <div class="stat-l">Total Appreciations</div>
+                <div class="stat-trend" style="margin-top:8px;font-size:.72rem">↑ Real-time data</div>
+              </div>
+              <div class="stat-card sc3">
+                <div class="stat-icon si3">📁</div>
+                <div class="stat-n" id="statProjects">—</div>
+                <div class="stat-l">Live Projects</div>
+                <div class="stat-trend" style="margin-top:8px;font-size:.72rem;color:var(--accent3)">Upload new project</div>
+              </div>
+              <div class="stat-card sc4">
+                <div class="stat-icon si4">👥</div>
+                <div class="stat-n" id="statFollowers">—</div>
+                <div class="stat-l">Followers</div>
+                <div class="stat-trend" style="margin-top:8px;font-size:.72rem">↑ Growing network</div>
+              </div>
+            </div>
+
+            <!-- Charts row -->
+            <div class="charts-row">
+              <div class="chart-box">
+                <div class="chart-hdr">
+                  <div class="chart-title">Profile Views (7 Days)</div>
+                  <div class="period-btns">
+                    <button class="p-btn active" onclick="setPBtn(this)">7D</button>
+                    <button class="p-btn" onclick="setPBtn(this)">1M</button>
+                    <button class="p-btn" onclick="setPBtn(this)">3M</button>
+                  </div>
+                </div>
+                <div class="bar-chart-wrap" id="dashBarChart" style="height:110px">
+                  <div style="color:var(--text3);font-size:.78rem;width:100%;text-align:center;align-self:center">Loading chart...</div>
+                </div>
+              </div>
+              <div class="chart-box">
+                <div class="chart-hdr"><div class="chart-title">Views by Source</div></div>
+                <div class="donut-container">
+                  <svg class="donut-svg" viewBox="0 0 110 110">
+                    <circle cx="55" cy="55" r="42" fill="none" stroke="var(--surface2)" stroke-width="15"/>
+                    <circle cx="55" cy="55" r="42" fill="none" stroke="var(--accent)" stroke-width="15" stroke-dasharray="158 106" stroke-dashoffset="-26" stroke-linecap="round"/>
+                    <circle cx="55" cy="55" r="42" fill="none" stroke="var(--accent3)" stroke-width="15" stroke-dasharray="63 201" stroke-dashoffset="-184" stroke-linecap="round"/>
+                    <circle cx="55" cy="55" r="42" fill="none" stroke="var(--accent4)" stroke-width="15" stroke-dasharray="43 221" stroke-dashoffset="-247" stroke-linecap="round"/>
+                    <text x="55" y="51" text-anchor="middle" font-size="14" font-weight="800" font-family="Syne,sans-serif" fill="#f0f2f5">60%</text>
+                    <text x="55" y="63" text-anchor="middle" font-size="7.5" fill="#8a94a6" font-family="Figtree,sans-serif">Direct</text>
+                  </svg>
+                  <div class="donut-legend">
+                    <div class="donut-item"><div class="donut-dot" style="background:var(--accent)"></div><div class="donut-lbl">Direct Search</div><div class="donut-val">60%</div></div>
+                    <div class="donut-item"><div class="donut-dot" style="background:var(--accent3)"></div><div class="donut-lbl">Social Media</div><div class="donut-val">24%</div></div>
+                    <div class="donut-item"><div class="donut-dot" style="background:var(--accent4)"></div><div class="donut-lbl">Referral</div><div class="donut-val">16%</div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="sect-hdr">
+              <div class="sect-title">My Projects</div>
+              <button class="sect-action" onclick="openUploadModal()">＋ Upload New ↗</button>
+            </div>
+            <div class="proj-grid" id="dashProjectGrid"><div class="loading-spinner"></div></div>
+
+            <div class="sect-hdr">
+              <div class="sect-title">Recent Activity</div>
+              <button class="sect-action" onclick="switchTab('notifications')">View All ↗</button>
+            </div>
+            <div class="activity-list" id="activityList"><div class="loading-spinner"></div></div>
+
+            <div class="sect-hdr"><div class="sect-title">Quick Actions</div></div>
+            <div class="quick-actions">
+              <button class="qa-btn" onclick="openUploadModal()"><div class="qa-icon">📤</div><div class="qa-label">Upload Work</div></button>
+              <button class="qa-btn" onclick="switchTab('profile')"><div class="qa-icon">✏️</div><div class="qa-label">Edit Profile</div></button>
+              <button class="qa-btn" onclick="switchTab('hire')"><div class="qa-icon">🔍</div><div class="qa-label">Find Jobs</div></button>
+              <button class="qa-btn" onclick="switchTab('explore')"><div class="qa-icon">🔭</div><div class="qa-label">Explore Work</div></button>
+            </div>
+          </div>
+
+          <!-- FIX #1: Analytics section (hidden by default, shown on tab click) -->
+          <div id="analyticsSection" style="display:none">
+            <div style="padding:20px 0 8px"><div class="loading-spinner"></div></div>
+          </div>
+
+          <!-- FIX #1: Activity section (hidden by default, shown on tab click) -->
+          <div id="activitySection" style="display:none">
+            <div style="padding:20px 0 8px"><div class="loading-spinner"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── EXPLORE (FIX #4: Grid/List toggle, Apply Filters button) ─── -->
+      <div id="sub-explore" class="subpage">
+        <div class="explore-topbar">
+          <div class="explore-search-wrap">
+            <span class="explore-search-i">🔍</span>
+            <input type="text" placeholder="Search projects, people, skills..." id="exploreSearchInput"/>
+          </div>
+          <div class="filter-row">
+            <select class="filter-select" id="exploreCatFilter">
+              <option value="">All Categories</option>
+              <option>Web Development</option><option>UI/UX Design</option><option>Mobile App</option>
+              <option>AI / ML</option><option>Branding</option><option>Illustration</option>
+              <option>Photography</option><option>3D Art</option>
+            </select>
+            <select class="filter-select" id="exploreLocationFilter">
+              <option value="">All Locations</option>
+              <option>India</option><option>USA</option><option>Germany</option>
+              <option>Japan</option><option>UAE</option><option>Remote</option>
+            </select>
+            <select class="filter-select" id="exploreWorkTypeFilter">
+              <option value="">All Types</option>
+              <option value="freelance">Freelance</option>
+              <option value="full_time">Full-time</option>
+              <option value="both">Open to both</option>
+            </select>
+            <select class="filter-select" id="exploreSortFilter">
+              <option value="recent">Most Recent</option>
+              <option value="popular">Most Liked</option>
+              <option value="views">Most Viewed</option>
+            </select>
+            <!-- Apply button -->
+            <button class="btn-accent-sm" onclick="applyExploreFilters()" style="padding:8px 18px;white-space:nowrap">Apply Filters</button>
+            <div class="view-btns">
+              <button class="vt-btn active" onclick="setExploreView('grid',this)">Grid</button>
+              <button class="vt-btn" onclick="setExploreView('list',this)">List</button>
+            </div>
+          </div>
+        </div>
+        <div class="explore-cats" id="exploreCatBar">
+          <button class="ex-cat active" onclick="setCatChip('',this)">⭐ For You</button>
+          <button class="ex-cat" onclick="setCatChip('Web Development',this)">⚛️ Web Dev</button>
+          <button class="ex-cat" onclick="setCatChip('UI/UX Design',this)">🎨 UI/UX</button>
+          <button class="ex-cat" onclick="setCatChip('Mobile App',this)">📱 Mobile</button>
+          <button class="ex-cat" onclick="setCatChip('AI / ML',this)">🤖 AI/ML</button>
+          <button class="ex-cat" onclick="setCatChip('Branding',this)">✒️ Branding</button>
+          <button class="ex-cat" onclick="setCatChip('Illustration',this)">✏️ Illustration</button>
+          <button class="ex-cat" onclick="setCatChip('Photography',this)">📷 Photography</button>
+          <button class="ex-cat" onclick="setCatChip('3D Art',this)">🎭 3D Art</button>
+        </div>
+        <div class="explore-content">
+          <div class="explore-meta-row">
+            <div class="explore-total" id="exploreTotal">Loading...</div>
+            <div style="font-size:.76rem;color:var(--text3)">Click any project to view details</div>
+          </div>
+          <div class="ex-masonry" id="exploreMasonry"><div class="loading-spinner"></div></div>
+          <button class="load-more-btn" id="loadMoreBtn" onclick="loadMoreExplore()">Load More Projects ↓</button>
+        </div>
+      </div>
+
+      <!-- ─── HIRE (FIX #5: My Jobs, How It Works, Apply button on filters) ─── -->
+      <div id="sub-hire" class="subpage">
+        <div class="hire-tabs-bar">
+          <button class="hire-tab" onclick="setHireTabView('myjobs',this)">📋 My Jobs</button>
+          <button class="hire-tab active" onclick="setHireTabView('freelancers',this)">🔍 Freelancers</button>
+          <button class="hire-tab" onclick="setHireTabView('howitworks',this)">ℹ️ How It Works</button>
+          <button class="hire-tab" onclick="openPostJobModal()">➕ Post a Job</button>
+        </div>
+        <div class="hire-body">
+          <!-- Left filter sidebar -->
+          <div class="hire-sidebar">
+            <button class="hire-new-btn" onclick="openPostJobModal()">＋ Post New Job</button>
+            <div class="hire-filter-grp">
+              <div class="hire-filter-title">Type ▾</div>
+              <label class="hire-filter-option sel"><input type="radio" name="fl_type" checked/> Freelancers</label>
+              <label class="hire-filter-option"><input type="radio" name="fl_type"/> Services</label>
+            </div>
+            <div class="hire-filter-grp">
+              <div class="hire-filter-title">Availability ▾</div>
+              <label class="hire-filter-option"><input type="checkbox" id="hireAvailNow"/> Available now</label>
+              <label class="hire-filter-option"><input type="checkbox"/> Open to part-time</label>
+              <label class="hire-filter-option"><input type="checkbox"/> Open to full-time</label>
+            </div>
+            <div class="hire-filter-grp">
+              <div class="hire-filter-title">Work Type ▾</div>
+              <label class="hire-filter-option"><input type="radio" name="fl_wtype" value=""/> All</label>
+              <label class="hire-filter-option"><input type="radio" name="fl_wtype" value="freelance"/> Freelance only</label>
+              <label class="hire-filter-option"><input type="radio" name="fl_wtype" value="full_time"/> Full-time only</label>
+            </div>
+            <div class="hire-filter-grp">
+              <div class="hire-filter-title">Location ▾</div>
+              <input type="text" id="hireLocationInput" placeholder="e.g. India, Remote" style="font-size:.78rem;padding:8px 10px;margin-top:4px"/>
+            </div>
+            <div class="hire-filter-grp">
+              <div class="hire-filter-title">Skills ▾</div>
+              <input type="text" id="hireSkillsInput" placeholder="e.g. React, Python" style="font-size:.78rem;padding:8px 10px;margin-top:4px"/>
+            </div>
+            <!-- FIX #5: Apply button -->
+            <button class="btn-accent-sm" onclick="applyHireFilters()" style="width:100%;margin-top:12px;padding:10px">Apply Filters</button>
+            <button class="btn-ghost-sm" onclick="clearHireFilters()" style="width:100%;margin-top:8px;padding:10px;text-align:center">Clear All</button>
+          </div>
+
+          <!-- Main hire content -->
+          <div style="flex:1;min-width:0">
+            <!-- Freelancers view -->
+            <div id="hireFreelancerView">
+              <div class="hire-main" style="padding:18px 22px">
+                <div class="hire-hdr-row">
+                  <div class="hire-h">Available Freelancers</div>
+                  <div class="hire-search">
+                    <span class="hire-search-i">🔍</span>
+                    <input type="text" id="hireSearchInput" placeholder="Search creatives..."/>
+                  </div>
+                  <select class="hire-sort" id="hireSortSelect">
+                    <option value="recent">Sort: Recent</option>
+                    <option value="popular">Most Followers</option>
+                    <option value="pro">Pro First</option>
+                  </select>
+                </div>
+                <div class="chip-row" id="hireChips">
+                  <button class="chip active" onclick="setHireChip('',this)">All</button>
+                  <button class="chip" onclick="setHireChip('React',this)">React</button>
+                  <button class="chip" onclick="setHireChip('Python',this)">Python</button>
+                  <button class="chip" onclick="setHireChip('Node.js',this)">Node.js</button>
+                  <button class="chip" onclick="setHireChip('UI/UX',this)">UI/UX</button>
+                  <button class="chip" onclick="setHireChip('Branding',this)">Branding</button>
+                  <button class="chip" onclick="setHireChip('Figma',this)">Figma</button>
+                </div>
+                <div class="fl-list" id="flList"><div class="loading-spinner"></div></div>
+              </div>
+            </div>
+
+            <!-- My Jobs view (FIX #5) -->
+            <div id="hireMyJobsView" style="display:none">
+              <div style="padding:20px 0 8px"><div class="loading-spinner"></div></div>
+            </div>
+
+            <!-- How It Works view (FIX #5) -->
+            <div id="hireHowItWorksView" style="display:none">
+              <div style="padding:32px 28px;max-width:700px">
+                <h2 style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;margin-bottom:8px">How FolioHub Hire Works</h2>
+                <p style="color:var(--text2);font-size:.88rem;margin-bottom:32px">Find the perfect creative talent for your project in 3 simple steps.</p>
+                <div style="display:flex;flex-direction:column;gap:20px">
+                  <div style="display:flex;gap:16px;align-items:flex-start;padding:20px;background:var(--surface);border-radius:14px;border:1px solid var(--border)">
+                    <div style="width:44px;height:44px;border-radius:50%;background:var(--accent);color:#08090b;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;flex-shrink:0">1</div>
+                    <div><div style="font-weight:700;margin-bottom:4px">Browse & Filter</div><div style="font-size:.84rem;color:var(--text2)">Use our powerful filters — location, skills, work type, availability — to find exactly the talent you need. Browse portfolios and projects to see real work.</div></div>
+                  </div>
+                  <div style="display:flex;gap:16px;align-items:flex-start;padding:20px;background:var(--surface);border-radius:14px;border:1px solid var(--border)">
+                    <div style="width:44px;height:44px;border-radius:50%;background:var(--accent3);color:#08090b;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;flex-shrink:0">2</div>
+                    <div><div style="font-weight:700;margin-bottom:4px">Send an Inquiry</div><div style="font-size:.84rem;color:var(--text2)">Click "Send Inquiry" on any freelancer's profile to send them a message. Describe your project, timeline, and budget. Freelancers typically respond within 24 hours.</div></div>
+                  </div>
+                  <div style="display:flex;gap:16px;align-items:flex-start;padding:20px;background:var(--surface);border-radius:14px;border:1px solid var(--border)">
+                    <div style="width:44px;height:44px;border-radius:50%;background:var(--accent4);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;flex-shrink:0">3</div>
+                    <div><div style="font-weight:700;margin-bottom:4px">Collaborate & Ship</div><div style="font-size:.84rem;color:var(--text2)">Agree on terms, collaborate through FolioHub messaging, and deliver your project. Rate the experience to help others in the community.</div></div>
+                  </div>
+                </div>
+                <div style="margin-top:24px;padding:20px;background:rgba(232,255,71,.06);border:1px solid rgba(232,255,71,.2);border-radius:14px">
+                  <div style="font-weight:700;margin-bottom:4px;color:var(--accent)">💡 Pro Tip</div>
+                  <div style="font-size:.83rem;color:var(--text2)">Post a job to receive applications from multiple qualified freelancers. Describe your project clearly and include your budget range for faster matching.</div>
+                  <button class="btn-accent-sm" onclick="openPostJobModal()" style="margin-top:12px">Post a Job Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── PROFILE ─── -->
+      <div id="sub-profile" class="subpage">
+        <div id="profileContainer"><div class="loading-spinner" style="margin:60px auto"></div></div>
+      </div>
+
+      <!-- ─── NOTIFICATIONS (FIX #6: Bell opens this page) ─── -->
+      <div id="sub-notifications" class="subpage">
+        <div class="notif-page">
+          <div class="notif-page-hdr">
+            <div class="notif-page-title">🔔 Notifications</div>
+            <button class="btn-ghost-sm" onclick="markAllNotifsRead()">Mark all read</button>
+          </div>
+          <div id="notifList"><div class="loading-spinner"></div></div>
+        </div>
+      </div>
+
+      <!-- ─── SAVED ─── -->
+      <div id="sub-saved" class="subpage">
+        <div class="saved-content">
+          <div class="sect-hdr" style="margin-bottom:16px">
+            <div class="sect-title" style="font-size:1.1rem;font-family:'Syne',sans-serif;font-weight:800">💾 Saved Projects</div>
+            <button class="sect-action" onclick="switchTab('explore')">Browse More ↗</button>
+          </div>
+          <div class="saved-grid" id="savedGrid"><div class="loading-spinner"></div></div>
+        </div>
+      </div>
+
+      <!-- ─── SETTINGS ─── -->
+      <div id="sub-settings" class="subpage">
+        <div class="settings-layout">
+          <div class="settings-nav-wrap">
+            <div class="settings-nav-title">Settings</div>
+            <button class="sn-item active" onclick="switchSettingsPanel('profile',this)">👤 Profile</button>
+            <button class="sn-item" onclick="switchSettingsPanel('account',this)">🔑 Account &amp; Security</button>
+            <button class="sn-item" onclick="switchSettingsPanel('notifs',this)">🔔 Notifications</button>
+            <button class="sn-item" onclick="switchSettingsPanel('privacy',this)">🔒 Privacy</button>
+            <button class="sn-item" onclick="switchSettingsPanel('appearance',this)">🎨 Appearance</button>
+            <button class="sn-item" onclick="switchSettingsPanel('billing',this)">💳 Billing &amp; Plan</button>
+            <div class="sn-div"></div>
+            <button class="sn-item" style="color:var(--accent2)" onclick="handleLogout()">🚪 Log Out</button>
+          </div>
+          <div>
+            <div id="sp-profile" class="s-panel active">
+              <div class="s-card">
+                <div class="s-card-title">Profile Photo</div><div class="s-card-desc">Upload a clear photo. Recommended 400×400px.</div>
+                <div class="av-upload-row">
+                  <div class="big-av" id="settingsAv">?</div>
+                  <div>
+                    <button class="av-upload-btn" onclick="document.getElementById('settingsAvatarInput').click()">Upload Photo</button>
+                    <input type="file" id="settingsAvatarInput" style="display:none" accept="image/*" onchange="uploadAvatar(this)"/>
+                    <button class="av-upload-btn" style="color:var(--accent2);border-color:rgba(255,77,109,.25)" onclick="toast('Contact support to remove photo','warn')">Remove Photo</button>
+                  </div>
+                </div>
+              </div>
+              <form onsubmit="saveProfileSettings(event)">
+                <div class="s-card">
+                  <div class="s-card-title">Basic Information</div><div class="s-card-desc">Update your public profile.</div>
+                  <div class="field-row">
+                    <div class="field"><label>FULL NAME</label><input type="text" id="set-full_name" placeholder="Yuvraj"/></div>
+                    <div class="field"><label>HEADLINE</label><input type="text" id="set-headline" placeholder="Full Stack Developer · React · Node.js"/></div>
+                  </div>
+                  <div class="field-row">
+                    <div class="field"><label>LOCATION</label><input type="text" id="set-location" placeholder="City, Country"/></div>
+                    <div class="field"><label>WORK TYPE</label>
+                      <select id="set-worktype">
+                        <option value="freelance">Freelance only</option>
+                        <option value="full_time">Full-time only</option>
+                        <option value="both">Open to both</option>
+                        <option value="not_available">Not available</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="field"><label>BIO</label><textarea id="set-bio" placeholder="Tell your story..."></textarea></div>
+                  <div class="field"><label>SKILLS (comma separated)</label><input type="text" id="set-skills" placeholder="React, Node.js, Python, Figma"/></div>
+                  <div class="s-row">
+                    <div class="s-row-info"><h4>Available for Work</h4><p>Show as available to recruiters</p></div>
+                    <label class="toggle"><input type="checkbox" id="set-available" checked/><div class="toggle-sl"></div></label>
+                  </div>
+                  <button type="submit" class="save-btn" id="saveProfileBtn">Save Changes</button>
+                </div>
+                <div class="s-card">
+                  <div class="s-card-title">Social Links</div><div class="s-card-desc">Connect your profiles for more credibility.</div>
+                  <div class="field-row">
+                    <div class="field"><label>GITHUB</label><input type="text" id="set-github" placeholder="https://github.com/yuvraj"/></div>
+                    <div class="field"><label>LINKEDIN</label><input type="text" id="set-linkedin" placeholder="https://linkedin.com/in/yourname"/></div>
+                  </div>
+                  <div class="field-row">
+                    <div class="field"><label>TWITTER / X</label><input type="text" id="set-twitter" placeholder="@yuvraj"/></div>
+                    <div class="field"><label>WEBSITE</label><input type="text" id="set-website" placeholder="https://yoursite.com"/></div>
+                  </div>
+                  <button type="submit" class="save-btn" style="margin-top:4px">Save Links</button>
+                </div>
+              </form>
+            </div>
+            <div id="sp-account" class="s-panel">
+              <div class="s-card">
+                <div class="s-card-title">Change Password</div><div class="s-card-desc">Use a strong, unique password.</div>
+                <form onsubmit="savePassword(event)">
+                  <div class="field"><label>CURRENT PASSWORD</label><input type="password" id="set-curr-pass" placeholder="••••••••"/></div>
+                  <div class="field"><label>NEW PASSWORD</label><input type="password" id="set-new-pass" placeholder="Min 6 characters"/></div>
+                  <div class="field"><label>CONFIRM NEW PASSWORD</label><input type="password" id="set-conf-pass" placeholder="••••••••"/></div>
+                  <button type="submit" class="save-btn">Change Password</button>
+                </form>
+              </div>
+              <div class="danger-card">
+                <div class="s-card">
+                  <div class="s-card-title" style="color:var(--accent2)">⚠️ Danger Zone</div><div class="s-card-desc">Permanent actions, cannot be undone.</div>
+                  <div class="s-row"><div class="s-row-info"><h4>Deactivate Account</h4><p>Temporarily hide your profile</p></div><button class="danger-btn" onclick="toast('Contact support to deactivate','warn')">Deactivate</button></div>
+                  <div class="s-row"><div class="s-row-info"><h4>Delete Account</h4><p>Permanently delete all data</p></div><button class="danger-btn" onclick="toast('Contact support to delete account','warn')">Delete</button></div>
+                </div>
+              </div>
+            </div>
+            <div id="sp-notifs" class="s-panel">
+              <div class="s-card">
+                <div class="s-card-title">Email Notifications</div><div class="s-card-desc">Choose which emails you receive.</div>
+                <div class="s-row"><div class="s-row-info"><h4>New Appreciations</h4><p>When someone likes your project</p></div><label class="toggle"><input type="checkbox" checked/><div class="toggle-sl"></div></label></div>
+                <div class="s-row"><div class="s-row-info"><h4>New Comments</h4><p>When someone comments on your work</p></div><label class="toggle"><input type="checkbox" checked/><div class="toggle-sl"></div></label></div>
+                <div class="s-row"><div class="s-row-info"><h4>New Followers</h4><p>When someone follows you</p></div><label class="toggle"><input type="checkbox"/><div class="toggle-sl"></div></label></div>
+                <div class="s-row"><div class="s-row-info"><h4>Weekly Stats</h4><p>Weekly portfolio performance email</p></div><label class="toggle"><input type="checkbox" checked/><div class="toggle-sl"></div></label></div>
+                <div class="s-row"><div class="s-row-info"><h4>Job Matches</h4><p>Relevant job opportunities</p></div><label class="toggle"><input type="checkbox" checked/><div class="toggle-sl"></div></label></div>
+              </div>
+            </div>
+            <div id="sp-privacy" class="s-panel">
+              <div class="s-card">
+                <div class="s-card-title">Profile Visibility</div><div class="s-card-desc">Control who can see your work.</div>
+                <div class="s-row"><div class="s-row-info"><h4>Public Profile</h4><p>Anyone can view your portfolio</p></div><label class="toggle"><input type="checkbox" checked/><div class="toggle-sl"></div></label></div>
+                <div class="s-row"><div class="s-row-info"><h4>Searchable</h4><p>Appear in search results</p></div><label class="toggle"><input type="checkbox" checked/><div class="toggle-sl"></div></label></div>
+                <div class="s-row"><div class="s-row-info"><h4>Available to Recruiters</h4><p>Let companies find and contact you</p></div><label class="toggle"><input type="checkbox" checked/><div class="toggle-sl"></div></label></div>
+                <div class="s-row"><div class="s-row-info"><h4>Show View Count</h4><p>Display view numbers publicly</p></div><label class="toggle"><input type="checkbox"/><div class="toggle-sl"></div></label></div>
+              </div>
+            </div>
+            <div id="sp-appearance" class="s-panel">
+              <div class="s-card">
+                <div class="s-card-title">Theme</div><div class="s-card-desc">Currently: Dark theme.</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                  <div style="padding:18px;border:2px solid var(--accent);border-radius:12px;text-align:center;cursor:pointer;background:var(--surface2)"><div style="font-size:1.3rem;margin-bottom:6px">🌑</div><div style="font-size:.83rem;font-weight:600;color:var(--accent)">Dark (Current)</div></div>
+                  <div style="padding:18px;border:1px solid var(--border);border-radius:12px;text-align:center;cursor:pointer;background:#f0f2f5" onclick="toast('Light mode coming soon!','warn')"><div style="font-size:1.3rem;margin-bottom:6px">☀️</div><div style="font-size:.83rem;font-weight:600;color:#0d1117">Light (Soon)</div></div>
+                </div>
+              </div>
+            </div>
+            <!-- FIX #7: Upgrade to Pro billing panel — working -->
+            <div id="sp-billing" class="s-panel">
+              <div class="s-card">
+                <div class="s-card-title">Current Plan</div><div class="s-card-desc">You are on the <strong>Free</strong> plan.</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:4px">
+                  <div style="padding:20px;border:1px solid var(--border);border-radius:12px;background:var(--surface2)">
+                    <div style="font-weight:700;margin-bottom:4px">Free</div>
+                    <div style="font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;margin-bottom:8px">$0<span style="font-size:.77rem;font-weight:400;color:var(--text2)">/mo</span></div>
+                    <ul style="font-size:.77rem;color:var(--text2);list-style:none;margin-bottom:12px;display:flex;flex-direction:column;gap:5px">
+                      <li>✓ Up to 5 projects</li><li>✓ Basic analytics</li><li>✓ Community access</li><li>✓ FolioHub profile</li>
+                    </ul>
+                    <div style="padding:7px;background:var(--surface);border-radius:7px;font-size:.74rem;text-align:center;color:var(--text3);font-weight:600">Current Plan ✓</div>
+                  </div>
+                  <div style="padding:20px;border:2px solid rgba(232,255,71,.4);border-radius:12px;background:rgba(232,255,71,.05)">
+                    <div style="font-weight:700;margin-bottom:4px;color:var(--accent)">Pro ⭐</div>
+                    <div style="font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;margin-bottom:8px">$8<span style="font-size:.77rem;font-weight:400;color:var(--text2)">/mo</span></div>
+                    <ul style="font-size:.77rem;color:var(--text2);list-style:none;margin-bottom:12px;display:flex;flex-direction:column;gap:5px">
+                      <li>✓ Unlimited projects</li><li>✓ Full analytics dashboard</li><li>✓ Priority in search</li><li>✓ Custom domain</li><li>✓ PRO badge on profile</li>
+                    </ul>
+                    <button onclick="openProModal()" style="width:100%;padding:9px;background:var(--accent);color:#08090b;border:none;border-radius:8px;font-size:.82rem;font-weight:700;cursor:pointer;font-family:inherit">Upgrade to Pro →</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- ═════ UPLOAD MODAL ═════ -->
+<div class="modal-overlay" id="uploadModal" onclick="if(event.target===this)closeUploadModal()">
+  <div class="modal-box">
+    <div class="modal-hdr"><div class="modal-hdr-title">📤 Upload New Project</div><button class="modal-x" onclick="closeUploadModal()">✕</button></div>
+    <div class="modal-scroll">
+      <form id="uploadForm">
+        <div class="upload-drop" id="dropzone" onclick="document.getElementById('projImages').click()">
+          <div class="upload-drop-icon">📸</div>
+          <h3>Drop project images here</h3>
+          <p>or click to browse · JPG, PNG, GIF · Max 10MB per file</p>
+          <input type="file" id="projImages" name="images" style="display:none" multiple accept="image/*" onchange="handleFilePreview(this)"/>
+        </div>
+        <div class="preview-grid" id="previewGrid"></div>
+        <div class="field"><label>PROJECT TITLE *</label><input type="text" id="projTitle" name="title" placeholder="Give your project a compelling name" required/></div>
+        <div class="field"><label>DESCRIPTION</label><textarea name="description" placeholder="Describe your project — what it does, how you built it..."></textarea></div>
+        <div class="field-row">
+          <div class="field"><label>CATEGORY</label>
+            <select name="category">
+              <option>Web Development</option><option>UI/UX Design</option><option>Mobile App</option>
+              <option>AI / ML</option><option>Branding</option><option>Illustration</option><option>Photography</option><option>3D Art</option>
+            </select>
+          </div>
+          <div class="field"><label>TAGS (comma separated)</label><input type="text" name="tags" placeholder="React, Node.js, MongoDB"/></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>LIVE URL</label><input type="url" name="live_url" placeholder="https://yourproject.com"/></div>
+          <div class="field"><label>GITHUB URL</label><input type="url" name="github_url" placeholder="https://github.com/you/project"/></div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-ghost" onclick="closeUploadModal()">Cancel</button>
+      <button class="btn-accent" id="uploadBtn" onclick="handleUpload(event)">Publish Project →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═════ PROJECT DETAIL MODAL ═════ -->
+<div class="wm-overlay" id="projectModal" onclick="if(event.target===this)closeProjectModal()">
+  <div class="wm-modal">
+    <div id="projectModalInner"><div class="modal-loading">⏳ Loading project...</div></div>
+  </div>
+</div>
+
+<!-- ═════ USER PROFILE MODAL ═════ -->
+<div class="um-overlay" id="userModal" onclick="if(event.target===this)closeUserModal()">
+  <div class="um-modal">
+    <button class="wm-close" onclick="closeUserModal()">✕</button>
+    <div id="userModalInner"><div class="modal-loading">⏳ Loading profile...</div></div>
+  </div>
+</div>
+
+<!-- ═════ MESSAGE MODAL ═════ -->
+<div class="modal-overlay" id="messageModal" onclick="if(event.target===this)closeMessageModal()">
+  <div class="modal-box" style="max-width:500px">
+    <div class="modal-hdr"><div class="modal-hdr-title">📧 Send Message to <span id="msgReceiverName"></span></div><button class="modal-x" onclick="closeMessageModal()">✕</button></div>
+    <div class="modal-scroll">
+      <form onsubmit="handleSendMessage(event)">
+        <input type="hidden" id="msgReceiverId"/>
+        <div class="field"><label>SUBJECT</label><input type="text" id="msgSubject" placeholder="Project Inquiry / Collaboration / Hello"/></div>
+        <div class="field"><label>MESSAGE *</label><textarea id="msgContent" placeholder="Hi! I came across your work on FolioHub..." style="min-height:120px" required></textarea></div>
+        <button type="submit" class="auth-btn" id="msgBtn" style="margin-top:0">Send Message</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ═════ POST JOB MODAL ═════ -->
+<div class="modal-overlay" id="postJobModal" onclick="if(event.target===this)closePostJobModal()">
+  <div class="modal-box">
+    <div class="modal-hdr"><div class="modal-hdr-title">💼 Post a New Job</div><button class="modal-x" onclick="closePostJobModal()">✕</button></div>
+    <div class="modal-scroll">
+      <form onsubmit="handlePostJob(event)">
+        <div class="field"><label>JOB TITLE *</label><input type="text" id="jobTitle" placeholder="e.g. Frontend Developer, UI Designer" required/></div>
+        <div class="field"><label>DESCRIPTION</label><textarea id="jobDesc" placeholder="Describe the role, requirements, and what you're looking for..."></textarea></div>
+        <div class="field-row">
+          <div class="field"><label>CATEGORY</label><select id="jobCategory"><option>Web Development</option><option>UI/UX Design</option><option>Mobile App</option><option>AI / ML</option><option>Branding</option></select></div>
+          <div class="field"><label>JOB TYPE</label><select id="jobType"><option value="remote">Remote</option><option value="onsite">On-site</option><option value="hybrid">Hybrid</option></select></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>LOCATION</label><input type="text" id="jobLocation" placeholder="City, Country or Remote"/></div>
+          <div class="field"><label>BUDGET RANGE</label><input type="text" id="jobBudget" placeholder="e.g. $500 - $2000"/></div>
+        </div>
+        <div class="field"><label>REQUIRED SKILLS</label><input type="text" id="jobSkills" placeholder="React, Node.js, Figma..."/></div>
+        <button type="submit" class="auth-btn" id="postJobBtn" style="margin-top:4px">Post Job →</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ═════ PRO UPGRADE MODAL (FIX #7) ═════ -->
+<div class="modal-overlay" id="proModal" onclick="if(event.target===this)closeProModal()">
+  <div class="modal-box" style="max-width:560px">
+    <div class="modal-hdr"><div class="modal-hdr-title">⭐ Upgrade to FolioHub Pro</div><button class="modal-x" onclick="closeProModal()">✕</button></div>
+    <div class="modal-scroll">
+      <div style="text-align:center;padding:8px 0 20px">
+        <div style="font-size:2.5rem;margin-bottom:10px">🚀</div>
+        <h3 style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;margin-bottom:6px">Unlock Your Full Creative Potential</h3>
+        <p style="font-size:.84rem;color:var(--text2)">Everything in Free, plus powerful Pro features to grow your career.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px">
+        ${['Unlimited Projects','Full Analytics Dashboard','Priority in Search Results','Custom Domain Support','PRO Badge on Profile','Advanced Portfolio Themes','Job Application Insights','Direct Recruiter Messaging'].map(f=>`<div style="display:flex;align-items:center;gap:8px;font-size:.82rem"><span style="color:var(--accent)">✓</span>${f}</div>`).join('')}
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <button onclick="handleProUpgrade('monthly')" class="auth-btn" style="background:var(--surface);color:var(--text);border:1px solid var(--border);margin:0">
+          <div style="font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;color:var(--accent)">$8/mo</div>
+          <div style="font-size:.75rem;color:var(--text3);margin-top:2px">Monthly Plan</div>
+        </button>
+        <button onclick="handleProUpgrade('yearly')" class="auth-btn" style="margin:0">
+          <div style="font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800">$60/yr</div>
+          <div style="font-size:.75rem;margin-top:2px;opacity:.8">Save 37% · Best Value</div>
+        </button>
+      </div>
+      <p style="text-align:center;font-size:.72rem;color:var(--text3);margin-top:12px">Cancel anytime. No hidden fees. 7-day money-back guarantee.</p>
+    </div>
+  </div>
+</div>
+
+<script src="/js/modules.js"></script>
+<script>
+// ══ INIT ══════════════════════════════════════
+(async () => {
+  window.addEventListener('load', setupDragDrop);
+  const user = await checkAuth();
+  if (user) {
+    updateNavForUser();
+  }
+})();
+
+// ══ USER MENU ═════════════════════════════════
+function toggleUserMenu() {
+  const d = document.getElementById('userDD');
+  if (!d) return;
+  const was = d.classList.contains('open');
+  closeDropdowns();
+  if (!was) d.classList.add('open');
+}
+document.addEventListener('click', e => {
+  if (!e.target.closest('#navUserAv') && !e.target.closest('#userDD')) {
+    document.getElementById('userDD')?.classList.remove('open');
+  }
+});
+
+// ══ HIRE HELPERS ═════════════════════════════
+function clearHireFilters() {
+  hireFilters = { search:'', location:'', work_type:'', skills:'', sort:'recent' };
+  const si = document.getElementById('hireSearchInput');
+  const li = document.getElementById('hireLocationInput');
+  const ski = document.getElementById('hireSkillsInput');
+  if (si) si.value = '';
+  if (li) li.value = '';
+  if (ski) ski.value = '';
+  document.querySelectorAll('input[name="fl_wtype"]')[0]?.click();
+  document.querySelectorAll('#hireChips .chip')[0]?.click();
+  renderFreelancers();
+  toast('Filters cleared');
+}
+
+// ══ ESC KEY ═══════════════════════════════════
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeUploadModal();
+    closeProjectModal();
+    closeUserModal();
+    closeMessageModal();
+    closePostJobModal();
+    closeProModal();
+    closeDropdowns();
+  }
+});
+</script>
+</body>
+</html>
