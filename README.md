@@ -2,13 +2,6 @@
 
 ---
 
-## 🌐 Live Demo
-
-> 🔗 **Live Website:** [Add your deployed URL here]
-> 📦 **GitHub Repo:** [Add your GitHub URL here]
-
----
-
 ## 📌 About This Project
 
 **FolioHub** is a full-featured creative portfolio platform — inspired by Behance and Awwwards — built from scratch as part of the **Future Interns Full Stack Web Development Internship (Task 1)**.
